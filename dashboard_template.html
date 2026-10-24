@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orbital Launch Analysis 1957–2026</title>
+<style>
+:root{--bg:#fafaf7;--card:#fff;--tx:#1d2330;--mu:#5d6675;--bd:#e3e5ea;--a:#1f5fbf;--b:#d8572a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151c;--card:#1b1f29;--tx:#e8eaf0;--mu:#9aa3b2;--bd:#2c3240;--a:#6ea2ff;--b:#ff8a5c}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Calibri,Arial,sans-serif;line-height:1.45}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.6rem;margin:0 0 4px}p.s{color:var(--mu);margin:0 0 18px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:16px}
+.k,.c{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.k b{display:block;font-size:1.7rem;color:var(--a)}.k span{color:var(--mu);font-size:.9rem}
+.c{margin-bottom:14px}.c h2{font-size:1.05rem;margin:0 0 2px}.c p{color:var(--mu);font-size:.88rem;margin:0 0 8px}
+.w{position:relative;height:280px}small{color:var(--mu)}
+</style></head><body><main>
+<h1>Orbital Launch Analysis, 1957–2026</h1>
+<p class="s">Who launches, how often, and how reliably. Source: Jonathan McDowell’s GCAT launch catalog (data to 24 Apr 2026).</p>
+<div class="g">__CARDS__</div>
+<div class="c"><h2>Launches per year</h2><p>Launch volume has more than tripled since 2015 (*2026 covers Jan to 24 Apr only).</p><div class="w"><canvas id="a"></canvas></div></div>
+<div class="c"><h2>Who launches: share by decade</h2><p>Dominance moved from the US, to the USSR, and back to the US plus China.</p><div class="w"><canvas id="b"></canvas></div></div>
+<div class="c"><h2>SpaceX share of global launches</h2><p>From a few percent in 2010 to about half of all orbital launches since 2024.</p><div class="w"><canvas id="d"></canvas></div></div>
+<div class="c"><h2>Top 10 launch vehicle families by launches</h2><p>Bars show launches; labels show success rate (all-time).</p><div class="w" style="height:340px"><canvas id="e"></canvas></div></div>
+<small>Success = orbital launch code “OS”; failure = “OF”. Country = launch provider’s country (USSR and Russia combined).</small>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const D=__DATA__;const cs=getComputedStyle(document.documentElement);
+const A=cs.getPropertyValue('--a').trim(),B=cs.getPropertyValue('--b').trim(),T=cs.getPropertyValue('--mu').trim();
+Chart.defaults.color=T;Chart.defaults.font.family='Calibri,Arial,sans-serif';
+const op={responsive:true,maintainAspectRatio:false};
+new Chart(a,{type:'bar',data:{labels:D.years,datasets:[{label:'Success',data:D.succ,backgroundColor:A},{label:'Failure',data:D.fail,backgroundColor:B}]},options:{...op,scales:{x:{stacked:true,ticks:{maxTicksLimit:14}},y:{stacked:true}}}});
+const col=['#1f5fbf','#d8572a','#2a9d8f','#e9a820','#8a5fd1','#9aa3b2'];
+new Chart(b,{type:'bar',data:{labels:D.decades,datasets:Object.keys(D.share).map((k,i)=>({label:k,data:D.share[k],backgroundColor:col[i]}))},options:{...op,scales:{x:{stacked:true},y:{stacked:true,max:100,title:{display:true,text:'% of launches'}}}}});
+new Chart(d,{type:'line',data:{labels:D.sxy,datasets:[{label:'SpaceX % of launches',data:D.sxp,borderColor:A,backgroundColor:A,tension:.25}]},options:{...op,scales:{y:{title:{display:true,text:'%'}}}}});
+new Chart(e,{type:'bar',data:{labels:D.vf.map((v,i)=>v+' ('+D.vs[i]+'%)'),datasets:[{label:'Launches',data:D.vl,backgroundColor:A}]},options:{...op,indexAxis:'y',plugins:{legend:{display:false}}}});
+</script></main></body></html>

@@ -1,0 +1,20 @@
+country,launches,successes,success_rate_pct,first_launch_year,share_of_all_pct
+USSR / Russia,3283,3070,93.5,1957,46.6
+United States,2274,2089,91.9,1957,32.2
+China,750,709,94.5,1970,10.6
+France,343,330,96.2,1965,4.9
+Japan,134,115,85.8,1966,1.9
+India,98,86,87.8,1979,1.4
+New Zealand (Rocket Lab),74,70,94.6,2017,1.0
+Iran,22,11,50.0,2008,0.3
+Europe (ESA),19,16,84.2,1979,0.3
+Israel,13,11,84.6,1988,0.2
+South Korea,9,5,55.6,2009,0.1
+North Korea,9,3,33.3,1998,0.1
+Italy,9,9,100.0,1967,0.1
+Sea Launch (Cayman-flagged),4,3,75.0,1999,0.1
+Europe (ELDO),4,0,0.0,1968,0.1
+Brazil,3,0,0.0,1997,0.0
+United Kingdom,2,1,50.0,1970,0.0
+Germany,1,0,0.0,2025,0.0
+Australia,1,0,0.0,2025,0.0
