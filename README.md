@@ -43,6 +43,8 @@ The project combines Python, SQL, SQLite, and data visualization to transform ra
 
 This project includes:
 - A Tableau dashboard for visual exploration of launch data.
+  Explore the interactive Space Launch Data Analysis dashboard:
+  🔗 [View Interactive Tableau Dashboard](https://public.tableau.com/app/profile/megha.manojkumar/viz/OrbitalLaunchAnalysis19572026/OrbitalLaunchDashboard)]
 - An HTML dashboard presenting key trends and analytical results.
 
 **Dashboard screenshots:** Add screenshots here so visitors can preview your visualizations directly from this repository.
