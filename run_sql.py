@@ -1,7 +1,7 @@
-"""Step 2: run every query in sql/analysis.sql and export CSVs for Tableau."""
+"""Step 2: run every query in sql/analysis_mysql.sql and export CSVs for Tableau."""
 import re, sqlite3, pandas as pd
 con = sqlite3.connect("data/processed/space.db")
-text = open("sql/analysis.sql").read()
+text = open("sql/analysis_mysql.sql").read()
 for block in re.split(r"\n(?=-- Q\d)", text)[1:]:
     name = re.search(r"-- name: (\w+)", block).group(1)
     df = pd.read_sql_query(block, con)
